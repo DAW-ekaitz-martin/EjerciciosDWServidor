@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pruebas con Fetch y PHP</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#102033;background:#071621}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;padding:38px 22px;background:radial-gradient(circle at 15% 0,#293c8f,transparent 35%),linear-gradient(140deg,#071621,#041018 64%,#0e2248)}
+    main{max-width:1050px;margin:auto;padding:40px;background:linear-gradient(135deg,#f8fbff,#fff 56%,#f2efff);border-radius:30px;box-shadow:0 18px 60px #0004}
+    h1{font-size:42px;line-height:1.06;letter-spacing:-.04em;margin:10px 0 18px}
+    h2{font-size:25px;line-height:1.15;color:#4338ca;margin:0 0 16px}
+    p{line-height:1.5;margin:12px 0}
+    .kicker{font-size:14px;font-weight:800;letter-spacing:.08em;color:#5b21b6;text-transform:uppercase}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
+    section{min-width:0;padding:26px;background:#fff;border:1px solid #ddd6fe;border-radius:24px}
+    label{display:block;font-size:16px;font-weight:700;margin:16px 0 7px}
+    input{width:100%;padding:11px 13px;font:inherit;border:2px solid #e0e7ff;border-radius:12px}
+    button{padding:12px 17px;margin-top:16px;font:inherit;font-weight:800;border:0;border-radius:13px;background:#5b21b6;color:#fff;cursor:pointer}
+    button.secondary{background:#eef2ff;color:#312e81}
+    button:disabled{opacity:.5;cursor:wait}
+    button:focus-visible,input:focus-visible{outline:3px solid #f5b84b;outline-offset:3px}
+    .estado{min-height:47px;padding:12px 14px;background:#eef2ff;border-radius:13px;color:#312e81}
+    .estado[data-estado="exito"]{background:#e8fbf3;color:#0b6d49}
+    .estado[data-estado="error"]{background:#fff1ee;color:#a6382f}
+    .salida{min-height:54px;padding:16px;border-radius:14px;background:#101820;color:#e9f7fb;white-space:pre-wrap;overflow-wrap:anywhere}
+    .ayuda{color:#61717d;font-size:15px;line-height:1.45}
+    code{font-family:Consolas,monospace}
+    @media(max-width:760px){body{padding:18px 12px}main{padding:26px 18px}.grid{grid-template-columns:1fr}h1{font-size:34px}section{padding:22px}}
+  </style>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">JavaScript y PHP · 2.º DAW</div>
+    <h1>Pruebas con Fetch y PHP</h1>
+    <p>Pulsa los botones y observa las peticiones en la pestaña Network del navegador.</p>
+  </header>
+  <div class="grid">
+    <section>
+      <h2>Un saludo desde PHP</h2>
+      <p>El navegador pide un texto al servidor y lo muestra en esta página.</p>
+      <p class="ayuda"><code>GET api/saludo.php</code></p>
+      <button id="pedir-saludo" type="button">Pedir saludo</button>
+      <p id="estado-saludo" class="estado" role="status">Preparado.</p>
+      <p id="saludo" class="salida">Aquí aparecerá la respuesta.</p>
+    </section>
+    <section>
+      <h2>La página durante una espera</h2>
+      <p>Pide una respuesta y, mientras llega, escribe en el campo o pulsa el contador.</p>
+      <label for="nota-local">Texto que quieres conservar</label>
+      <input id="nota-local" type="text" placeholder="Escribe aquí">
+      <button id="contar-local" type="button" class="secondary">Contador local: 0</button>
+      <label for="retardo">Retardo (ms)</label>
+      <input id="retardo" type="number" min="0" max="2000" step="100" value="2000">
+      <p class="ayuda">Este parámetro indica cuánto espera PHP antes de responder. 1000 ms equivalen a 1 segundo. El servidor admite de 0 a 2000 ms.</p>
+      <button id="pedir-respuesta" type="button">Pedir respuesta</button>
+      <p id="estado-respuesta" class="estado" role="status">Preparado.</p>
+      <p id="respuesta" class="salida">Aquí aparecerá la respuesta.</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>
