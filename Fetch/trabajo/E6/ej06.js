@@ -1,10 +1,12 @@
-const boton = document.getElementById("cargar");
+const boton = document.getElementById("buscar");
 const estado = document.getElementById("estado");
 const lista = document.getElementById("lista");
 
 async function llamar() {
     try {
-        const r = await fetch('../api/alumnos.php');
+        const nombre = boton.textContent;
+        const  parametro = new URLSearchParams({q:nombre});
+        const r = await fetch(`../api/alumnos2.php?${parametro}`);
         if(!r.ok) throw new Error("No se pudo pedir el saludo");
         const cuerpo = await r.json();
         lista.replaceChildren();
