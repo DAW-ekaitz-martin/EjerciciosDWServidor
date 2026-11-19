@@ -1,10 +1,11 @@
 const boton = document.getElementById("buscar");
 const estado = document.getElementById("estado");
 const lista = document.getElementById("lista");
+const input = document.getElementById("q");
 
 async function llamar() {
     try {
-        const nombre = boton.textContent;
+        const nombre = input.value;
         const  parametro = new URLSearchParams({q:nombre});
         const r = await fetch(`../api/alumnos2.php?${parametro}`);
         if(!r.ok) throw new Error("No se pudo pedir el saludo");

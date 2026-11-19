@@ -8,8 +8,8 @@
     $alumnosfiltrado = [];
     $param = trim($_GET["q"] ?? "");
     foreach($alumnos as $alumno) {
-        if(str_contains(mb_strtolower($param, 'UTF-8'),mb_strtolower($alumno['nombre'], 'UTF-8'))) {
-            $alumnosfiltrado = $alumno;
+        if(str_contains(mb_strtolower($alumno['nombre'], 'UTF-8'), mb_strtolower($param, 'UTF-8'))) {
+            $alumnosfiltrado[] = $alumno;
         }
     }
     echo json_encode(['ok' => true, 'datos'=> $alumnosfiltrado], 
