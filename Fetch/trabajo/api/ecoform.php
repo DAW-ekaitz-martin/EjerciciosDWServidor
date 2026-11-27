@@ -1,14 +1,17 @@
 <?php
-    if(isset($_POST["nombre"]) && isset($_POST["email"])) {
-        $nombre = $_POST["nombre"];
-        $email = $_POST["email"];
-        if(is_string($nombre) && is_string($email)) {
-            $nombre = trim($nombre);
-            $email = trim($email);
-        } else {
-           415 {'ok':true, "error" : {}};
-        }
-
+    declare(strict_types=1);
+    require_once '_comun.php';
+    header("Content-Type: application/json; charset=utf-8");
+    $datos = [];
+    
+    
+    $datos['nombre'] = $_POST["nombre"];
+    $datos['email'] = $_POST["email"];
+    $contenido = validar_contacto($datos);
+    if($contenido["nombre"] && $contenido['email']) {
+        echo json_encode(['ok' => true, "datos" => $contenido]);
     }
+    //No hay else porque validar contacto ya devuelve un error en caso de necesitarlo.
+
     
 ?>

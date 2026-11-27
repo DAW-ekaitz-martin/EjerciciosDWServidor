@@ -1,3 +1,4 @@
+"use strict";
 const boton = document.getElementById("buscar");
 const estado = document.getElementById("estado");
 const lista = document.getElementById("lista");

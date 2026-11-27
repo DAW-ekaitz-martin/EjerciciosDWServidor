@@ -1,3 +1,4 @@
+"use strict";
 const boton = document.getElementById("boton");
 const select = document.getElementById("caso");
 const estado = document.getElementById("estado");

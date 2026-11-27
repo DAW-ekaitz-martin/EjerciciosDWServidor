@@ -1,3 +1,4 @@
+"use strict";
 const boton = document.getElementById("pedir");
 const salida = document.getElementById("salida");
 

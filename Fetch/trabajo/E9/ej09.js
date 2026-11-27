@@ -1,8 +1,10 @@
+"use strict";
 const formulario = document.getElementById("formulario");
 const nombre = document.getElementById("name");
 const email = document.getElementById("email");
 const parrafo = document.getElementById("estado");
 const boton = document.getElementById("enviar");
+const lista = document.getElementById('info');
 
 /*De esta manera lo haría si el botón del formulario no fuese de tipo submit.
 async function enviar() {}
@@ -15,4 +17,15 @@ formulario.addEventListener("submit", async(evento) => {
         method:'POST',
         body:cuerpo,
     });
+    const contenido =  await r.json();
+    if(!r.ok){
+        parrafo.textContent = r.contenido.error
+    } 
+    else {
+        for(const dato of contenido.datos) {
+            const nuevoP = document.createElement("p");
+            nuevoP.textContent = dato;
+            lista.appendChild(nuevoP)
+        }
+    };
 });
